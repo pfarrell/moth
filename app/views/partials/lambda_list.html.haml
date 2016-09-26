@@ -1,0 +1,23 @@
+%table.table.table-condensed
+  %thead
+    %tr
+      -model[:header].each do |header|
+        %th
+          =header[0]
+  %tbody
+    %tr
+      -model[:data].each do |defn|
+        %tr
+          -model[:header].each do |name, prop|
+            %td
+              -if name == "tags"
+                - prop[:value].call(defn).split(", ").each do |tag|
+                  %a{href: "#{base}/tag/#{tag}"}
+                    =tag
+              -else
+                .table-data
+                  -if prop[:link].nil?
+                    =prop[:value].call(defn)
+                  -else
+                    %a{href:"#{prop[:link].call(defn)}"}
+                      =prop[:value].call(defn)
