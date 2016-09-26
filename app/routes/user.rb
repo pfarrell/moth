@@ -1,12 +1,11 @@
 class Moth < Sinatra::Application
   get "/user/:id" do
-    user = User.find(email: params[:email])&.first
-    password = Password.new("#{user.salt}-#{params[:password]}")
-    if(user && user.password == password)
-    end
+    user = User.find(email: params[:email])
+    User.login(params[:email], params[:password]) ? "success" : "fail"
   end
 
   post "/user" do
     user = User.new(email: params[:email], name: params[:name])
+    redirect(url_for("/"))
   end
 end
