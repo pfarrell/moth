@@ -1,0 +1,11 @@
+%table.table.table-condensed
+  %thead
+    %tr
+      -list.first.columns.each do |col|
+        %th
+          =col
+  %tbody
+    -list.each do |entry|
+      -entry.columns.each do |col|
+        %td
+          =entry[col]

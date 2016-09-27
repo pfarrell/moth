@@ -18,5 +18,4 @@ group :development do
   gem 'rspec'
   gem 'simplecov'
   gem 'byebug'
-  gem 'shotgun'
 end

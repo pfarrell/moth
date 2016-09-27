@@ -5,6 +5,7 @@ Sequel.migration do
       Bignum      :user_id
       Fixnum      :app_id
       String      :action
+      DateTime    :valid_until
       DateTime    :created_at
       DateTime    :updated_at
     end
