@@ -18,3 +18,8 @@ html, body {
   clear: both;
   padding-top: 20px;
 }
+
+input {
+  margin-bottom: 100px;
+}
+

@@ -32,6 +32,9 @@
         %form.form-signin{method: "POST", action: "#{url_for('/user')}"}
           %h2.form-signin-heading
             Please sign up
+          %label.sr-only{for:"name"}
+            Name
+          %input#name.form-control{name: "name", type:"text", placeholder: "Name"}
           %label.sr-only{for:"email"}
             Email address
           %input#email.form-control{name: "email", type:"email", placeholder: "Email address", required: "true", autofocus: "true"}
