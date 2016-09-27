@@ -10,4 +10,8 @@ class Moth < Sinatra::Application
     user.save
     redirect(url_for("/"))
   end
+
+  get "/users" do
+    haml :list, locals: {list: User.all}
+  end
 end

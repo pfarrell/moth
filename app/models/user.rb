@@ -9,9 +9,7 @@ class User < Sequel::Model
   end
 
   def self.login(email, password)
-    require 'byebug'
     user = User.find(email: email)
-    Password.new(user.password).is_password?(password) ? user : nil
   end
 
 end

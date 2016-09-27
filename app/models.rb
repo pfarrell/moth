@@ -23,3 +23,4 @@ Sequel::Model.plugin :json_serializer
 
 require 'models/user'
 require 'models/log'
+require 'models/token'
