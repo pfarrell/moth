@@ -1,8 +1,9 @@
 Sequel.migration do
   change do
-    create_table(:logs) do
+    create_table(:tokens) do
       primary_key :id
-      Fixnum      :user_id
+      Bignum      :user_id
+      Fixnum      :app_id
       String      :action
       DateTime    :created_at
       DateTime    :updated_at
