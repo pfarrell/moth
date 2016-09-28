@@ -14,8 +14,13 @@ gem 'haml'
 
 gem 'bcrypt'
 
-group :development do
+group :development, :test do
   gem 'rspec'
   gem 'simplecov'
+  gem 'simplecov-badge'
+  gem 'test-unit'
+end
+
+group :development do
   gem 'byebug'
 end

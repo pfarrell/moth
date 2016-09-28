@@ -4,8 +4,8 @@ Sequel.migration do
       primary_key :id
       Bignum      :user_id
       Fixnum      :app_id
-      String      :action
-      DateTime    :valid_until
+      String      :token
+      DateTime    :expires
       DateTime    :created_at
       DateTime    :updated_at
     end
