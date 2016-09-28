@@ -20,8 +20,6 @@ describe 'Moth' do
     end
 
     it "should allow access to the /app/:id page" do
-      require 'byebug'
-      byebug
       get "/user/#{app.id}"
       expect(last_response).to be_ok
     end
