@@ -1,10 +1,10 @@
 class Moth < Sinatra::Application
-  get "/apps" do
-    haml :list, locals: { list: App.all }
+  get "/applications" do
+    haml :list, locals: { list: Application.all }
   end
 
-  post "/app" do
-    app = App.new(name: params[:name], user: current_user)
-    haml :list, locals: { list: app }
+  post "/application" do
+    application = Application.new(name: params[:name], user: current_user)
+    haml :list, locals: { list: application }
   end
 end

@@ -6,6 +6,9 @@ describe User do
   let(:user) { User.find_or_create(email: "test@example.com")}
 
   context '.login' do
+    before do
+      user
+    end
 
     it "logs in users" do
       expect(User.login(email, password)).to_not be_nil

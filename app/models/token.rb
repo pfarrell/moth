@@ -1,5 +1,5 @@
 class Token < Sequel::Model
-  many_to_one :app
+  many_to_one :application
   many_to_one :user
 
   def initialize(opts={})

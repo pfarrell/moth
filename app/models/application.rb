@@ -1,4 +1,4 @@
-class App < Sequel::Model
+class Application < Sequel::Model
   many_to_many :users
   one_to_many :tokens
 end
