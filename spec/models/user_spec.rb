@@ -3,7 +3,12 @@ require 'spec_helper'
 describe User do
   let(:email) { "test@example.com" }
   let(:password) { "password" }
-  let(:user) { User.find_or_create(email: "test@example.com")}
+  let(:user) { 
+    user = User.find_or_create(email: "test@example.com")
+    user.set_password password
+    user.save
+    user
+  }
 
   context '.login' do
     before do

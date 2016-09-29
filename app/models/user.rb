@@ -12,6 +12,7 @@ class User < Sequel::Model
 
   def self.login(email, password)
     user = User.find(email: email)
+    return Password.new(user.password).is_password?(password)
   end
 
 end

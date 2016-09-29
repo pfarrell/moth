@@ -2,7 +2,7 @@ Sequel.migration do
   change do
     create_table(:applications) do
       primary_key :id
-      String      :name
+      String      :name, unique: true
       String      :redirect
       String      :homepage
       DateTime    :created_at

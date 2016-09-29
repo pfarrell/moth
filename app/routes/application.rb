@@ -13,7 +13,9 @@ class Moth < Sinatra::Application
   end
 
   post "/application" do
-    application = Application.new(name: params[:name], user: current_user)
+    application = Application.find_or_create(name: params[:name])
+    application.add_user current_user
+    application.save
     redirect url_for("/application/#{application.id}")
   end
 end

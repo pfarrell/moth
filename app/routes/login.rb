@@ -3,8 +3,9 @@ class Moth < Sinatra::Application
     user = User.find(email: params[:email])
     if user && User.login(params[:email], params[:password])
       token = Token.where(user: user).all.select{|x| x.expires > Time.now.utc}.first
+      token = Token.find_or_create(user: user) unless token
       respond_to do |wants|
-        wants.json {}
+        wants.json { token.to_json }
         wants.html {
           response.set_cookie(:auth, value: token.token, path: "/", expires: token.expires)
         }
