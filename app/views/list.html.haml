@@ -1,14 +1,14 @@
 %h2
-  Users
+  =title
 %table.table.table-condensed
   %thead
     %tr
-      -list.first.columns.each do |col|
+      -headers.each do |col|
         %th
           =col
   %tbody
     -list.each do |entry|
       %tr
-        -entry.columns.each do |col|
+        -headers.each do |col|
           %td
             =entry[col]

@@ -19,15 +19,15 @@ describe 'Moth' do
       end
     end
 
-    #it "should allow access to the /user/:id page" do
-    #  get "/user/#{user.id}"
-    #  expect(last_response).to be_ok
-    #end
+    it "should allow access to the /user/:id page" do
+      get "/user/#{user.id}"
+      expect(last_response).to be_ok
+    end
 
-    #it "should allow access to the /app/:id page" do
-    #  get "/user/#{app.id}"
-    #  expect(last_response).to be_ok
-    #end
+    it "should allow access to the /application/:id page" do
+      get "/application/#{application.id}"
+      expect(last_response).to be_ok
+    end
 
   end
 end
