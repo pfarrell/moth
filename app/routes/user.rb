@@ -14,4 +14,11 @@ class Moth < Sinatra::Application
   get "/users" do
     haml :list, locals: {list: User.all, headers: User.columns, title: "User"}
   end
+
+  get "/user/:id/applications" do
+  end
+
+  post "/user/:id/applications" do
+    protected
+  end
 end

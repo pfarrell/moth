@@ -19,7 +19,11 @@ class Moth < Sinatra::Application
   helpers do
     def current_user
       token = request.env["HTTP_AUTH_TOKEN"] || request.cookies["moth_token"]
-      Token.find(token: token).user
+      Token.find(token: token)&.user
+    end
+
+    def protected
+      redirect("/?return=#{request.path}") unless current_user
     end
   end
 

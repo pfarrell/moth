@@ -5,14 +5,26 @@ class Moth < Sinatra::Application
   end
 
   get "/applications" do
-    haml :list, locals: merge({ list: Application.all })
+    protected
+    haml :list, locals: merge({ list: Application.where(user: current_user).all })
   end
 
   get "/application/:id" do
+    protected
     haml :entity, locals: { entity: Application[params[:id].to_i]}
   end
 
+  get "/application/:id/login" do
+    haml :index, locals: { application: Application[params[:id].to_i]}
+  end
+
+  get "/application" do
+    protected
+    haml :application
+  end
+
   post "/application" do
+    protected
     application = Application.find_or_create(name: params[:name])
     application.add_user current_user
     application.save
