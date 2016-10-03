@@ -1,6 +1,6 @@
 %h1
   %small
-    Authentication for patf.net
+    Authentication for #{application.name}
 %hr
 .row
   .col-sm-6
@@ -13,7 +13,7 @@
           Signup
     .tab-content
       #login.tab-pane.active
-        %form.form-signin{method: "POST", action: "#{url_for('/login')}"}
+        %form.form-signin{method: "POST", action: "#{url_for("/application/#{application.id}/login")}"}
           %h2.form-signin-heading
             Please login
           %label.sr-only{for:"email"}
@@ -29,7 +29,7 @@
           %button.btn.btn-lg.btn-primary.btn-block{type: "submit"}
             Sign in
       #signup.tab-pane
-        %form.form-signin{method: "POST", action: "#{url_for('/user')}"}
+        %form.form-signin{method: "POST", action: "#{url_for("/application/#{application.id}/users")}"}
           %h2.form-signin-heading
             Please sign up
           %label.sr-only{for:"name"}

@@ -62,11 +62,20 @@ describe 'Moth' do
       expect(last_response).to be_ok
     end
 
+    it "loads application login pages" do
+      get "/application/#{application.id}/login"
+      expect(last_response).to be_ok
+    end
+    
     it "redirects to applications pages" do
       authenticate
-      byebug
-      get "/application/#{application.id}/login"
+      post "/application/#{application.id}/login"
       expect(last_response).to be_redirect
+    end
+
+    it "denies unauthenticated application logins" do
+      post "/application/#{application.id}/login"
+      expect(last_response).to_not be_ok
     end
 
     it "should allow logins" do

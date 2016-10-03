@@ -1,0 +1,7 @@
+%h1
+  Application logins
+-applications.each do |application|
+  .application
+    %a{href: url_for("/application/#{application.id}/login")}
+      =application.name
+
