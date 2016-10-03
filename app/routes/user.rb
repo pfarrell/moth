@@ -1,5 +1,6 @@
 class Moth < Sinatra::Application
   get "/user/:id" do
+    protected
     user = User.find(email: params[:email])
     haml :entity, locals: { entity: user }
   end
@@ -8,17 +9,11 @@ class Moth < Sinatra::Application
     user = User.new(email: params[:email], name: params[:name])
     user.set_password(params[:password])
     user.save
-    redirect(url_for("/user/#{user.id}"))
+    haml :entity, locals: { entity: user }
   end
 
   get "/users" do
-    haml :list, locals: {list: User.all, headers: User.columns, title: "User"}
-  end
-
-  get "/user/:id/applications" do
-  end
-
-  post "/user/:id/applications" do
     protected
+    haml :list, locals: {list: User.all, headers: User.columns, title: "User"}
   end
 end

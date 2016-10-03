@@ -6,6 +6,7 @@ require 'sinatra/respond_to'
 require 'sinatra/cookies'
 require 'securerandom'
 require 'haml'
+require 'byebug'
 
 class Moth < Sinatra::Application
   helpers Sinatra::UrlForHelper
@@ -18,7 +19,7 @@ class Moth < Sinatra::Application
 
   helpers do
     def current_user
-      token = request.env["HTTP_AUTH_TOKEN"] || request.cookies["moth_token"]
+      token = request.env["HTTP_AUTH_TOKEN"] || request.cookies["auth"]
       Token.find(token: token)&.user
     end
 

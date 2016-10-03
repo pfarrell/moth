@@ -6,7 +6,7 @@ class Moth < Sinatra::Application
 
   get "/applications" do
     protected
-    haml :list, locals: merge({ list: Application.where(user: current_user).all })
+    haml :list, locals: merge({ list: current_user.applications })
   end
 
   get "/application/:id" do
@@ -15,7 +15,9 @@ class Moth < Sinatra::Application
   end
 
   get "/application/:id/login" do
-    haml :index, locals: { application: Application[params[:id].to_i]}
+    protected
+    application = Application[params[:id].to_i]
+    redirect application.redirect
   end
 
   get "/application" do
@@ -29,5 +31,16 @@ class Moth < Sinatra::Application
     application.add_user current_user
     application.save
     redirect url_for("/application/#{application.id}")
+  end
+
+  post "/application/:id/users" do
+    protected
+    application = Application[params[:id].to_i]
+    application.add_user current_user
+    ret = application.save
+    respond_to do |wants|
+      wants.html { haml :entity, locals: { entity: current_user } }
+      wants.json { ret.to_json }
+    end
   end
 end

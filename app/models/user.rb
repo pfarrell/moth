@@ -2,7 +2,7 @@ class User < Sequel::Model
   include BCrypt
   one_to_many  :logs
   one_to_many  :tokens
-  many_to_many :apps
+  many_to_many :applications
 
   def set_password(str)
     password = Password.create(str)
