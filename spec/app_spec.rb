@@ -6,19 +6,19 @@ describe 'Moth' do
     let(:app_name) { "dragons" }
     let(:password) { "password" }
     let(:name) { "test namee" }
-    let(:user) { 
-      user = User.find_or_create(email: email) 
+    let(:user) {
+      user = User.find_or_create(email: email)
       user.set_password password
       user.save
       user
     }
     let(:token) { Token.new(user: user).save }
-    let(:application) { 
-      app = Application.find_or_create(name: app_name) 
+    let(:application) {
+      app = Application.find_or_create(name: app_name, redirect: 'http://example.com', homepage: 'http://example.net')
       app.add_user user
       app
     }
-  
+
   def authenticate
     set_cookie "auth=#{token.token}"
   end
@@ -66,10 +66,9 @@ describe 'Moth' do
       get "/application/#{application.id}/login"
       expect(last_response).to be_ok
     end
-    
+
     it "redirects to applications pages" do
-      authenticate
-      post "/application/#{application.id}/login"
+      post "/application/#{application.id}/login", {email: email, password: password}
       expect(last_response).to be_redirect
     end
 
@@ -110,7 +109,7 @@ describe 'Moth' do
       expect(last_response).to be_ok
     end
   end
-  
+
   context "/user" do
     it "creates users" do
       authenticate

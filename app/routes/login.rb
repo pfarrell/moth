@@ -14,8 +14,4 @@ class Moth < Sinatra::Application
       halt 401, "Not authorized\n"
     end
   end
-
-  get "/login/:token" do
-  
-  end
 end
