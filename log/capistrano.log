@@ -391,3 +391,270 @@ remote: Compressing objects:   0% (1/158)   [K
  DEBUG [adced6dc] 	cannot touch ‘/var/www/moth/releases/20161003070119/tmp/restart.txt’
  DEBUG [adced6dc] 	: No such file or directory
  DEBUG [adced6dc] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-03 00:01:42 -0700 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [b0ab4197] Running /usr/bin/env mkdir -p /tmp as pfarrell@patf.net
+ DEBUG [b0ab4197] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env mkdir -p /tmp )
+  INFO [b0ab4197] Finished in 0.348 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-moth-production-pfarrell.sh 0.0%
+  INFO Uploading /tmp/git-ssh-moth-production-pfarrell.sh 100.0%
+  INFO [a4b3e05f] Running /usr/bin/env chmod 700 /tmp/git-ssh-moth-production-pfarrell.sh as pfarrell@patf.net
+ DEBUG [a4b3e05f] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env chmod 700 /tmp/git-ssh-moth-production-pfarrell.sh )
+  INFO [a4b3e05f] Finished in 0.033 seconds with exit status 0 (successful).
+  INFO [26829e31] Running /usr/bin/env git ls-remote --heads git@github.com:pfarrell/moth.git as pfarrell@patf.net
+ DEBUG [26829e31] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-moth-production-pfarrell.sh" ; /usr/bin/env git ls-remote --heads git@github.com:pfarrell/moth.git )
+ DEBUG [26829e31] 	7c6baab9715bdd0ec4dcf5659be07c9c4492749b
+ DEBUG [26829e31] 		
+ DEBUG [26829e31] 	refs/heads/master
+ DEBUG [26829e31] 	
+  INFO [26829e31] Finished in 1.218 seconds with exit status 0 (successful).
+  INFO [d5381990] Running /usr/bin/env mkdir -p /var/www/moth/shared /var/www/moth/releases as pfarrell@patf.net
+ DEBUG [d5381990] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env mkdir -p /var/www/moth/shared /var/www/moth/releases )
+  INFO [d5381990] Finished in 0.024 seconds with exit status 0 (successful).
+ DEBUG [5352daa1] Running [ -f /var/www/moth/current/REVISION ] as pfarrell@patf.net
+ DEBUG [5352daa1] Command: [ -f /var/www/moth/current/REVISION ]
+ DEBUG [5352daa1] Finished in 0.022 seconds with exit status 0 (successful).
+ DEBUG [ca92c148] Running /usr/bin/env cat /var/www/moth/current/REVISION 2>/dev/null as pfarrell@patf.net
+ DEBUG [ca92c148] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env cat /var/www/moth/current/REVISION 2>/dev/null )
+ DEBUG [ca92c148] 	30f49d4460a1385abb1eff91f5e4c689e852aac6
+ DEBUG [ca92c148] 	
+ DEBUG [ca92c148] Finished in 0.026 seconds with exit status 0 (successful).
+ DEBUG [95bdfef9] Running [ -f /var/www/moth/repo/HEAD ] as pfarrell@patf.net
+ DEBUG [95bdfef9] Command: [ -f /var/www/moth/repo/HEAD ]
+ DEBUG [95bdfef9] Finished in 0.022 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /var/www/moth/repo
+ DEBUG [cee7c3ba] Running if test ! -d /var/www/moth/repo; then echo "Directory does not exist '/var/www/moth/repo'" 1>&2; false; fi as pfarrell@patf.net
+ DEBUG [cee7c3ba] Command: if test ! -d /var/www/moth/repo; then echo "Directory does not exist '/var/www/moth/repo'" 1>&2; false; fi
+ DEBUG [cee7c3ba] Finished in 0.022 seconds with exit status 0 (successful).
+  INFO [fe248125] Running /usr/bin/env git remote update --prune as pfarrell@patf.net
+ DEBUG [fe248125] Command: cd /var/www/moth/repo && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-moth-production-pfarrell.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [fe248125] 	Fetching origin
+ DEBUG [fe248125] 	
+ DEBUG [fe248125] 	remote: Counting objects: 12, done.[K
+ DEBUG [fe248125] 	
+ DEBUG [fe248125] 	remote: Compressing objects:  14% (1/7)   [K
+ DEBUG [fe248125] 	remote: Compressing objects:  28% (2/7)   [K
+ DEBUG [fe248125] 	remote: Compressing objects:  42% (3/7)   [K
+ DEBUG [fe248125] 	remote: Compressing objects:  57% (4/7)   [K
+ DEBUG [fe248125] 	remote: Compressing objects:  71% (5/7)   [K
+ DEBUG [fe248125] 	remote: Compressing objects:  85% (6/7)   [K
+ DEBUG [fe248125] 	remote: Compressing objects: 10
+ DEBUG [fe248125] 	0% (7/7)   [K
+ DEBUG [fe248125] 	remote: Compressing objects: 100% (7/7), done.[K
+ DEBUG [fe248125] 	
+ DEBUG [fe248125] 	remote: Total 12 (delta 4), reused 12 (delta 4), pack-reused 0[K
+ DEBUG [fe248125] 	
+ DEBUG [fe248125] 	Unpacking objects:   8% (1/12)   
+ DEBUG [fe248125] 	Unpacking objects:  16% (2/12)   
+ DEBUG [fe248125] 	Unpacking objects:  25% (3/12)   
+ DEBUG [fe248125] 	Unpacking objects:  33% (4/12)   
+ DEBUG [fe248125] 	Unpacking objects:  41% (5/12)   
+ DEBUG [fe248125] 	Unpacking objects:  50% (6/12)   
+ DEBUG [fe248125] 	Unpacking objects:  58% (7/12)   
+ DEBUG [fe248125] 	Unpacking objects:  66% (8/12)   
+ DEBUG [fe248125] 	Unpacking objects:  75% (9/12)   
+ DEBUG [fe248125] 	Unpacking objects:  83% (10/12)   
+ DEBUG [fe248125] 	Unpacking objects:  91% (11/12)   
+ DEBUG [fe248125] 	Unpacking objects: 100% (12/12)   
+ DEBUG [fe248125] 	Unpacking objects: 100% (12/12), done.
+ DEBUG [fe248125] 	
+ DEBUG [fe248125] 	From github.com:pfarrell/moth
+ DEBUG [fe248125] 	
+ DEBUG [fe248125] 	   30f49d4..7c6baab  master     -> master
+ DEBUG [fe248125] 	
+  INFO [fe248125] Finished in 1.439 seconds with exit status 0 (successful).
+ DEBUG [fcd092ed] Running if test ! -d /var/www/moth/repo; then echo "Directory does not exist '/var/www/moth/repo'" 1>&2; false; fi as pfarrell@patf.net
+ DEBUG [fcd092ed] Command: if test ! -d /var/www/moth/repo; then echo "Directory does not exist '/var/www/moth/repo'" 1>&2; false; fi
+ DEBUG [fcd092ed] Finished in 0.030 seconds with exit status 0 (successful).
+  INFO [0cba2b40] Running /usr/bin/env mkdir -p /var/www/moth/releases/20161003070146 as pfarrell@patf.net
+ DEBUG [0cba2b40] Command: cd /var/www/moth/repo && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-moth-production-pfarrell.sh" ; /usr/bin/env mkdir -p /var/www/moth/releases/20161003070146 )
+  INFO [0cba2b40] Finished in 0.045 seconds with exit status 0 (successful).
+  INFO [085193fd] Running /usr/bin/env git archive master | tar -x -f - -C /var/www/moth/releases/20161003070146 as pfarrell@patf.net
+ DEBUG [085193fd] Command: cd /var/www/moth/repo && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-moth-production-pfarrell.sh" ; /usr/bin/env git archive master | tar -x -f - -C /var/www/moth/releases/20161003070146 )
+  INFO [085193fd] Finished in 0.037 seconds with exit status 0 (successful).
+ DEBUG [1f62b584] Running if test ! -d /var/www/moth/repo; then echo "Directory does not exist '/var/www/moth/repo'" 1>&2; false; fi as pfarrell@patf.net
+ DEBUG [1f62b584] Command: if test ! -d /var/www/moth/repo; then echo "Directory does not exist '/var/www/moth/repo'" 1>&2; false; fi
+ DEBUG [1f62b584] Finished in 0.021 seconds with exit status 0 (successful).
+ DEBUG [9ab48428] Running /usr/bin/env git rev-list --max-count=1 master as pfarrell@patf.net
+ DEBUG [9ab48428] Command: cd /var/www/moth/repo && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-moth-production-pfarrell.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [9ab48428] 	7c6baab9715bdd0ec4dcf5659be07c9c4492749b
+ DEBUG [9ab48428] 	
+ DEBUG [9ab48428] Finished in 0.024 seconds with exit status 0 (successful).
+ DEBUG [2dc7a2d0] Running if test ! -d /var/www/moth/releases/20161003070146; then echo "Directory does not exist '/var/www/moth/releases/20161003070146'" 1>&2; false; fi as pfarrell@patf.net
+ DEBUG [2dc7a2d0] Command: if test ! -d /var/www/moth/releases/20161003070146; then echo "Directory does not exist '/var/www/moth/releases/20161003070146'" 1>&2; false; fi
+ DEBUG [2dc7a2d0] Finished in 0.022 seconds with exit status 0 (successful).
+  INFO [13e9a1fc] Running /usr/bin/env echo "7c6baab9715bdd0ec4dcf5659be07c9c4492749b" >> REVISION as pfarrell@patf.net
+ DEBUG [13e9a1fc] Command: cd /var/www/moth/releases/20161003070146 && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env echo "7c6baab9715bdd0ec4dcf5659be07c9c4492749b" >> REVISION )
+  INFO [13e9a1fc] Finished in 0.026 seconds with exit status 0 (successful).
+ DEBUG [99dc2941] Running if test ! -d /var/www/moth/releases/20161003070146; then echo "Directory does not exist '/var/www/moth/releases/20161003070146'" 1>&2; false; fi as pfarrell@patf.net
+ DEBUG [99dc2941] Command: if test ! -d /var/www/moth/releases/20161003070146; then echo "Directory does not exist '/var/www/moth/releases/20161003070146'" 1>&2; false; fi
+ DEBUG [99dc2941] Finished in 0.023 seconds with exit status 0 (successful).
+ DEBUG [dc10469b] Running /usr/bin/env bundle check --path /var/www/moth/shared/bundle as pfarrell@patf.net
+ DEBUG [dc10469b] Command: cd /var/www/moth/releases/20161003070146 && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env bundle check --path /var/www/moth/shared/bundle )
+ DEBUG [dc10469b] 	[31mThe following gems are missing[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * net-ssh (3.2.0)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * net-scp (1.2.1)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * sshkit (1.11.3)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * airbrussh (1.1.1)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * byebug (9.0.6)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * capistrano-harrow (0.5.3)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * i18n (0.7.0)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * capistrano (3.6.1)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * capistrano-bower (1.1.0)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * capistrano-bundler (1.2.0)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * capistrano-rvm (0.1.2)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * diff-lcs (1.2.5)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * docile (1.1.5)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * json (2.0.2)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * power_assert (0.3.1)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * rspec-support (3.5.0)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * rspec-core (3.5.4)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * rspec-expectations (3.5.0)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * rspec-mocks (3.5.0)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * rspec (3.5.0)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * sequel (4.39.0)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * simplecov-html (0.10.0)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * simplecov (0.12.0)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * simplecov-badge (2.0.2)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[31m * test-unit (3.2.1)[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] 	[33mInstall missing gems with `bundle install`[0m
+ DEBUG [dc10469b] 	
+ DEBUG [dc10469b] Finished in 0.454 seconds with exit status 1 (failed).
+  INFO [1981bd8b] Running /usr/bin/env bundle install --path /var/www/moth/shared/bundle --without development test --deployment --quiet as pfarrell@patf.net
+ DEBUG [1981bd8b] Command: cd /var/www/moth/releases/20161003070146 && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env bundle install --path /var/www/moth/shared/bundle --without development test --deployment --quiet )
+  INFO [1981bd8b] Finished in 10.254 seconds with exit status 0 (successful).
+  INFO [66df5640] Running /usr/bin/env ln -s /var/www/moth/releases/20161003070146 /var/www/moth/releases/current as pfarrell@patf.net
+ DEBUG [66df5640] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env ln -s /var/www/moth/releases/20161003070146 /var/www/moth/releases/current )
+  INFO [66df5640] Finished in 0.029 seconds with exit status 0 (successful).
+  INFO [c8d0f29f] Running /usr/bin/env mv /var/www/moth/releases/current /var/www/moth as pfarrell@patf.net
+ DEBUG [c8d0f29f] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env mv /var/www/moth/releases/current /var/www/moth )
+  INFO [c8d0f29f] Finished in 0.025 seconds with exit status 0 (successful).
+  INFO [6d8e9f24] Running /usr/bin/env touch /var/www/moth/releases/20161003070146/tmp/restart.txt as pfarrell@patf.net
+ DEBUG [6d8e9f24] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env touch /var/www/moth/releases/20161003070146/tmp/restart.txt )
+ DEBUG [6d8e9f24] 	touch: 
+ DEBUG [6d8e9f24] 	cannot touch ‘/var/www/moth/releases/20161003070146/tmp/restart.txt’
+ DEBUG [6d8e9f24] 	: No such file or directory
+ DEBUG [6d8e9f24] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2016-10-03 00:03:21 -0700 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [55b41089] Running /usr/bin/env mkdir -p /tmp as pfarrell@patf.net
+ DEBUG [55b41089] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env mkdir -p /tmp )
+  INFO [55b41089] Finished in 0.370 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-moth-production-pfarrell.sh 0.0%
+  INFO Uploading /tmp/git-ssh-moth-production-pfarrell.sh 100.0%
+  INFO [d22d4ff2] Running /usr/bin/env chmod 700 /tmp/git-ssh-moth-production-pfarrell.sh as pfarrell@patf.net
+ DEBUG [d22d4ff2] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env chmod 700 /tmp/git-ssh-moth-production-pfarrell.sh )
+  INFO [d22d4ff2] Finished in 0.025 seconds with exit status 0 (successful).
+  INFO [96cd7107] Running /usr/bin/env git ls-remote --heads git@github.com:pfarrell/moth.git as pfarrell@patf.net
+ DEBUG [96cd7107] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-moth-production-pfarrell.sh" ; /usr/bin/env git ls-remote --heads git@github.com:pfarrell/moth.git )
+ DEBUG [96cd7107] 	7c6baab9715bdd0ec4dcf5659be07c9c4492749b	refs/heads/master
+  INFO [96cd7107] Finished in 1.348 seconds with exit status 0 (successful).
+  INFO [7edbf39a] Running /usr/bin/env mkdir -p /var/www/moth/shared /var/www/moth/releases as pfarrell@patf.net
+ DEBUG [7edbf39a] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env mkdir -p /var/www/moth/shared /var/www/moth/releases )
+  INFO [7edbf39a] Finished in 0.029 seconds with exit status 0 (successful).
+ DEBUG [5f7531d5] Running [ -f /var/www/moth/current/REVISION ] as pfarrell@patf.net
+ DEBUG [5f7531d5] Command: [ -f /var/www/moth/current/REVISION ]
+ DEBUG [5f7531d5] Finished in 0.032 seconds with exit status 0 (successful).
+ DEBUG [759b73fc] Running /usr/bin/env cat /var/www/moth/current/REVISION 2>/dev/null as pfarrell@patf.net
+ DEBUG [759b73fc] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env cat /var/www/moth/current/REVISION 2>/dev/null )
+ DEBUG [759b73fc] 	7c6baab9715bdd0ec4dcf5659be07c9c4492749b
+ DEBUG [759b73fc] Finished in 0.032 seconds with exit status 0 (successful).
+ DEBUG [6128b2d4] Running [ -f /var/www/moth/repo/HEAD ] as pfarrell@patf.net
+ DEBUG [6128b2d4] Command: [ -f /var/www/moth/repo/HEAD ]
+ DEBUG [6128b2d4] Finished in 0.026 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /var/www/moth/repo
+ DEBUG [e7eafc1b] Running if test ! -d /var/www/moth/repo; then echo "Directory does not exist '/var/www/moth/repo'" 1>&2; false; fi as pfarrell@patf.net
+ DEBUG [e7eafc1b] Command: if test ! -d /var/www/moth/repo; then echo "Directory does not exist '/var/www/moth/repo'" 1>&2; false; fi
+ DEBUG [e7eafc1b] Finished in 0.028 seconds with exit status 0 (successful).
+  INFO [bd1f14b1] Running /usr/bin/env git remote update --prune as pfarrell@patf.net
+ DEBUG [bd1f14b1] Command: cd /var/www/moth/repo && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-moth-production-pfarrell.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [bd1f14b1] 	Fetching origin
+  INFO [bd1f14b1] Finished in 1.277 seconds with exit status 0 (successful).
+ DEBUG [39e1dce7] Running if test ! -d /var/www/moth/repo; then echo "Directory does not exist '/var/www/moth/repo'" 1>&2; false; fi as pfarrell@patf.net
+ DEBUG [39e1dce7] Command: if test ! -d /var/www/moth/repo; then echo "Directory does not exist '/var/www/moth/repo'" 1>&2; false; fi
+ DEBUG [39e1dce7] Finished in 0.024 seconds with exit status 0 (successful).
+  INFO [fb1ad2c7] Running /usr/bin/env mkdir -p /var/www/moth/releases/20161003070325 as pfarrell@patf.net
+ DEBUG [fb1ad2c7] Command: cd /var/www/moth/repo && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-moth-production-pfarrell.sh" ; /usr/bin/env mkdir -p /var/www/moth/releases/20161003070325 )
+  INFO [fb1ad2c7] Finished in 0.058 seconds with exit status 0 (successful).
+  INFO [eb747485] Running /usr/bin/env git archive master | tar -x -f - -C /var/www/moth/releases/20161003070325 as pfarrell@patf.net
+ DEBUG [eb747485] Command: cd /var/www/moth/repo && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-moth-production-pfarrell.sh" ; /usr/bin/env git archive master | tar -x -f - -C /var/www/moth/releases/20161003070325 )
+  INFO [eb747485] Finished in 0.056 seconds with exit status 0 (successful).
+ DEBUG [b7266224] Running if test ! -d /var/www/moth/repo; then echo "Directory does not exist '/var/www/moth/repo'" 1>&2; false; fi as pfarrell@patf.net
+ DEBUG [b7266224] Command: if test ! -d /var/www/moth/repo; then echo "Directory does not exist '/var/www/moth/repo'" 1>&2; false; fi
+ DEBUG [b7266224] Finished in 0.029 seconds with exit status 0 (successful).
+ DEBUG [7b3442b6] Running /usr/bin/env git rev-list --max-count=1 master as pfarrell@patf.net
+ DEBUG [7b3442b6] Command: cd /var/www/moth/repo && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-moth-production-pfarrell.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [7b3442b6] 	7c6baab9715bdd0ec4dcf5659be07c9c4492749b
+ DEBUG [7b3442b6] 	
+ DEBUG [7b3442b6] Finished in 0.034 seconds with exit status 0 (successful).
+ DEBUG [56a96ade] Running if test ! -d /var/www/moth/releases/20161003070325; then echo "Directory does not exist '/var/www/moth/releases/20161003070325'" 1>&2; false; fi as pfarrell@patf.net
+ DEBUG [56a96ade] Command: if test ! -d /var/www/moth/releases/20161003070325; then echo "Directory does not exist '/var/www/moth/releases/20161003070325'" 1>&2; false; fi
+ DEBUG [56a96ade] Finished in 0.036 seconds with exit status 0 (successful).
+  INFO [548a0b98] Running /usr/bin/env echo "7c6baab9715bdd0ec4dcf5659be07c9c4492749b" >> REVISION as pfarrell@patf.net
+ DEBUG [548a0b98] Command: cd /var/www/moth/releases/20161003070325 && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env echo "7c6baab9715bdd0ec4dcf5659be07c9c4492749b" >> REVISION )
+  INFO [548a0b98] Finished in 0.028 seconds with exit status 0 (successful).
+ DEBUG [bdf5a268] Running if test ! -d /var/www/moth/releases/20161003070325; then echo "Directory does not exist '/var/www/moth/releases/20161003070325'" 1>&2; false; fi as pfarrell@patf.net
+ DEBUG [bdf5a268] Command: if test ! -d /var/www/moth/releases/20161003070325; then echo "Directory does not exist '/var/www/moth/releases/20161003070325'" 1>&2; false; fi
+ DEBUG [bdf5a268] Finished in 0.025 seconds with exit status 0 (successful).
+ DEBUG [832d31ba] Running /usr/bin/env bundle check --path /var/www/moth/shared/bundle as pfarrell@patf.net
+ DEBUG [832d31ba] Command: cd /var/www/moth/releases/20161003070325 && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env bundle check --path /var/www/moth/shared/bundle )
+ DEBUG [832d31ba] 	[31mThe following gems are missing[0m
+ DEBUG [832d31ba] 	[31m * byebug (9.0.6)[0m
+ DEBUG [832d31ba] 	[31m * diff-lcs (1.2.5)[0m
+ DEBUG [832d31ba] 	[31m * docile (1.1.5)[0m
+ DEBUG [832d31ba] 	[31m * json (2.0.2)[0m
+ DEBUG [832d31ba] 	[31m * power_assert (0.3.1)[0m
+ DEBUG [832d31ba] 	[31m * rspec-support (3.5.0)[0m
+ DEBUG [832d31ba] 	[31m * rspec-core (3.5.4)[0m
+ DEBUG [832d31ba] 	[31m * rspec-expectations (3.5.0)[0m
+ DEBUG [832d31ba] 	[31m * rspec-mocks (3.5.0)[0m
+ DEBUG [832d31ba] 	[31m * rspec (3.5.0)[0m
+ DEBUG [832d31ba] 	[31m * simplecov-html (0.10.0)[0m
+ DEBUG [832d31ba] 	[31m * simplecov (0.12.0)[0m
+ DEBUG [832d31ba] 	[31m * simplecov-badge (2.0.2)[0m
+ DEBUG [832d31ba] 	[31m * test-unit (3.2.1)[0m
+ DEBUG [832d31ba] 	[33mInstall missing gems with `bundle install`[0m
+ DEBUG [832d31ba] Finished in 0.521 seconds with exit status 1 (failed).
+  INFO [868af3dd] Running /usr/bin/env bundle install --path /var/www/moth/shared/bundle --without development test --deployment --quiet as pfarrell@patf.net
+ DEBUG [868af3dd] Command: cd /var/www/moth/releases/20161003070325 && ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env bundle install --path /var/www/moth/shared/bundle --without development test --deployment --quiet )
+  INFO [868af3dd] Finished in 0.610 seconds with exit status 0 (successful).
+  INFO [954d2ff3] Running /usr/bin/env ln -s /var/www/moth/releases/20161003070325 /var/www/moth/releases/current as pfarrell@patf.net
+ DEBUG [954d2ff3] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env ln -s /var/www/moth/releases/20161003070325 /var/www/moth/releases/current )
+  INFO [954d2ff3] Finished in 0.029 seconds with exit status 0 (successful).
+  INFO [c9588c8a] Running /usr/bin/env mv /var/www/moth/releases/current /var/www/moth as pfarrell@patf.net
+ DEBUG [c9588c8a] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env mv /var/www/moth/releases/current /var/www/moth )
+  INFO [c9588c8a] Finished in 0.038 seconds with exit status 0 (successful).
+  INFO [0fe34131] Running /usr/bin/env touch /var/www/moth/releases/20161003070325/tmp/restart.txt as pfarrell@patf.net
+ DEBUG [0fe34131] Command: ( export PATH="/home/pfarrell/.rvm/rubies/ruby-2.3.0/bin:/home/pfarrell/.rvm/gems/ruby-2.3.0@global/bin:/home/pfarrell/.rvm/bin:$PATH" RUBY_VERSION="ruby-2.3.0" GEM_HOME="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" GEM_PATH="/home/pfarrell/.rvm/gems/ruby-2.3.0@global" ; /usr/bin/env touch /var/www/moth/releases/20161003070325/tmp/restart.txt )
+ DEBUG [0fe34131] 	touch: 
+ DEBUG [0fe34131] 	cannot touch ‘/var/www/moth/releases/20161003070325/tmp/restart.txt’
+ DEBUG [0fe34131] 	: No such file or directory
+ DEBUG [0fe34131] 	
