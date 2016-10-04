@@ -6,7 +6,6 @@ require 'sinatra/respond_to'
 require 'sinatra/cookies'
 require 'securerandom'
 require 'haml'
-require 'byebug'
 
 class Moth < Sinatra::Application
   helpers Sinatra::UrlForHelper
