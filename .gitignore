@@ -12,3 +12,4 @@ public/media
 .byebug_history
 coverage/**/*
 !coverage/coverage-badge.png
+log/*
