@@ -6,7 +6,7 @@ require 'securerandom'
 
 $console = ENV['RACK_ENV'] == 'development' ? Logger.new(STDOUT) : nil
 DB = Sequel.connect(
-  ENV['APP_DB'] || 'postgres://localhost/moth',
+  ENV['MOTH_DB'] || 'postgres://localhost/moth',
   logger: $console,
   test: true
 )
