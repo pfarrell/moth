@@ -42,7 +42,7 @@ class Moth < Sinatra::Application
 
   post "/application" do
     protected
-    application = Application.find_or_create(name: params[:name])
+    application = Application.find_or_create(name: params[:name], redirect: params[:redirect], homepage: params[:homepage])
     application.add_user current_user
     application.save
     redirect url_for("/application/#{application.id}")

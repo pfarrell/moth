@@ -1,7 +1,7 @@
 class Moth < Sinatra::Application
   get "/user/:id" do
     protected
-    user = User.find(email: params[:email])
+    user = User[params[:id].to_i]
     haml :entity, locals: { entity: user }
   end
 

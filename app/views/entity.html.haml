@@ -1,1 +1,9 @@
-Entity
+%h2
+  ="#{entity.class}(##{entity.id})"
+%table.table.table-condensed
+  -entity.columns.each do |col|
+    %tr
+      %th
+        =col
+      %td
+        =entity[col]

@@ -23,6 +23,7 @@
           Moth
       .collapse.navbar-collapse#navbar-collapse
         = haml :'partials/nav'
+        = haml :'partials/profile', locals: { current_user: current_user } if current_user
     #wrap
       .container.clear-top#content
         =yield

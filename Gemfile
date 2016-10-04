@@ -25,4 +25,5 @@ group :development do
   gem 'simplecov-badge'
   gem 'test-unit'
   gem 'byebug'
+  gem 'pry'
 end

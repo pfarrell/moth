@@ -1,0 +1,4 @@
+%ul.nav.navbar-nav.pull-right
+  %li
+    %a{href: "#{url_for("/user/#{current_user.id}")}"}
+      =current_user.name
