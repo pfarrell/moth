@@ -16,4 +16,11 @@ class Moth < Sinatra::Application
     protected
     haml :list, locals: {list: User.all, headers: User.columns, title: "User"}
   end
+
+  get "/user/:id/logout" do
+    protected
+    auth_token = cookies.delete("auth")
+    Token.find(token: auth_token).expire
+    redirect url_for('/')
+  end
 end
