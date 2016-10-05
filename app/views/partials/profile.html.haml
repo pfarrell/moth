@@ -1,4 +1,9 @@
 %ul.nav.navbar-nav.pull-right
-  %li
-    %a{href: "#{url_for("/user/#{current_user.id}")}"}
+  %li.dropdown
+    %a.dropdown-toggle{href: "#", role: "button", aria: { haspopup: "true", expanded: "false"}, data: { toggle: "dropdown"}}
       =current_user.name
+      %span.caret
+    %ul.dropdown-menu
+      %li
+        %a{href: "#{url_for("/user/#{current_user.id}")}"}
+          Profile

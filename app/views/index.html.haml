@@ -1,9 +1,10 @@
-%a{href: url_for("/application")}
-  Register an application
+- if current_user
+  %a{href: url_for("/application")}
+    Register an application
 %h1
   Application logins
 -applications.each do |application|
-  .application
+  %h3
     %a{href: url_for("/application/#{application.id}/login")}
       =application.name
 
