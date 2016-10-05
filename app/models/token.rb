@@ -11,4 +11,10 @@ class Token < Sequel::Model
   def valid?
     self.expires < (Time.now + 7 * 24 * 3600).utc
   end
+
+  def expire
+    self.expired_at = Time.now.utc
+    self.save
+  end
+
 end
