@@ -23,8 +23,6 @@ class Moth < Sinatra::Application
     if user && User.login(params[:email], params[:password])
       token = Token.where(user: user).all.select{|x| x.expires > Time.now.utc}.first
       token = Token.find_or_create(user: user) unless token
-      require 'byebug'
-      byebug
       respond_to do |wants|
         wants.json { token.to_json }
         wants.html {
