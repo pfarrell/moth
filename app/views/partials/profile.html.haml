@@ -7,3 +7,6 @@
       %li
         %a{href: "#{url_for("/user/#{current_user.id}")}"}
           Profile
+      %li
+        %a{href: "#{url_for("/user/#{current_user.id}")}/logout"}
+          Logout

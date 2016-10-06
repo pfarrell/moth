@@ -23,7 +23,7 @@ class Moth < Sinatra::Application
     end
 
     def protected
-      redirect("/?return=#{request.path}") unless current_user
+      redirect(url_for("/?return=#{request.path}")) unless current_user
     end
   end
 
