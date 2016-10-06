@@ -23,16 +23,21 @@ class Moth < Sinatra::Application
     if user && User.login(params[:email], params[:password])
       token = Token.where(user: user).all.select{|x| x.expires > Time.now.utc}.first
       token = Token.find_or_create(user: user) unless token
+      require 'byebug'
+      byebug
       respond_to do |wants|
         wants.json { token.to_json }
         wants.html {
           response.set_cookie(:auth, value: token.token, path: "/", expires: token.expires)
+          redirect application_from_params.redirect
         }
       end
     else
-      halt 401, "Not authorized\n"
+      respond_to do |wants|
+        wants.html { haml :login, locals: { application: application_from_params, error_message: "Login or password incorrect"}}
+        wants.json { halt 401, "Login failure" }
+      end
     end
-    redirect application_from_params.redirect
   end
 
   get "/application" do

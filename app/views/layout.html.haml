@@ -26,6 +26,11 @@
         = haml :'partials/profile', locals: { current_user: current_user } if current_user
     #wrap
       .container.clear-top#content
+        -if locals.has_key?(:error_message)
+          .alert.alert-danger
+            %a.close{data: { dismiss: "alert" }, aria: { label: "close" } }
+              &times;
+            =error_message
         =yield
     %footer.footer
       A
