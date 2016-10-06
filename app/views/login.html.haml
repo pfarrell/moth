@@ -4,5 +4,5 @@
 %hr
 .row
   .col-sm-6
-    =haml :'partials/signup', locals: { signup: "/application/#{application.id}/login", login:  "/application/#{application.id}/users" }
+    =haml :'partials/signup', locals: { application: application, user: current_user, signup: "/application/#{application.id}/login", login:  "/application/#{application.id}/users" }
 :javascript

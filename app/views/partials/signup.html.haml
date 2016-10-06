@@ -1,40 +1,45 @@
-%ul.nav.nav-tabs{role: "tablist"}
-  %li.active{role: "presentation"}
-    %a{href: "#login", aria: {controls: "login"}, role: "tab", data: {toggle: "tab"}}
-      Login
-  %li{role: "presentation"}
-    %a{href: "#signup", aria: {controls: "signup"}, role: "tab", data: {toggle: "tab"}}
-      Signup
-.tab-content
-  #login.tab-pane.active
-    %form.form-signin{method: "POST", action: "#{url_for(signup)}"}
-      %h2.form-signin-heading
-        Please login
-      %label.sr-only{for:"email"}
-        Email address
-      %input#email.form-control{name: "email", type:"email", placeholder: "Email address", required: "true", autofocus: "true"}
-      %label.sr-only{for:"password"}
-        Password
-      %input#password.form-control{name: "password", type:"password", placeholder:"Password", required: "true"}
-      %div.checkbox
-        %label
-          %input{type: "checkbox", value: "remember-me"}
-            Remember me
-      %button.btn.btn-lg.btn-primary.btn-block{type: "submit"}
-        Sign in
-  #signup.tab-pane
-    %form.form-signin{method: "POST", action: "#{url_for(login)}"}
-      %h2.form-signin-heading
-        Please sign up
-      %label.sr-only{for:"name"}
-        Name
-      %input#name.form-control{name: "name", type:"text", placeholder: "Name"}
-      %label.sr-only{for:"email"}
-        Email address
-      %input#email.form-control{name: "email", type:"email", placeholder: "Email address", required: "true", autofocus: "true"}
-      %label.sr-only{for:"password"}
-        Password
-      %input#password.form-control{name: "password", type:"password", placeholder:"Password", required: "true"}
-      %input#confirm_password.form-control{name: "confirm_password", type:"password", placeholder:"Confirm Password", required: "true"}
-      %button.btn.btn-lg.btn-primary.btn-block{type: "submit"}
-        Sign Up
+-if current_user
+  %form{method: "POST", action: "#{url_for("/application/#{application.id}/user/#{user.id}")}"}
+    %button.btn.btn-lg.btn-primary.btn-block{type: "submit"}
+      Join this Application
+-else
+  %ul.nav.nav-tabs{role: "tablist"}
+    %li.active{role: "presentation"}
+      %a{href: "#login", aria: {controls: "login"}, role: "tab", data: {toggle: "tab"}}
+        Login
+    %li{role: "presentation"}
+      %a{href: "#signup", aria: {controls: "signup"}, role: "tab", data: {toggle: "tab"}}
+        Signup
+  .tab-content
+    #login.tab-pane.active
+      %form.form-signin{method: "POST", action: "#{url_for(signup)}"}
+        %h2.form-signin-heading
+          Please login
+        %label.sr-only{for:"email"}
+          Email address
+        %input#email.form-control{name: "email", type:"email", placeholder: "Email address", required: "true", autofocus: "true"}
+        %label.sr-only{for:"password"}
+          Password
+        %input#password.form-control{name: "password", type:"password", placeholder:"Password", required: "true"}
+        %div.checkbox
+          %label
+            %input{type: "checkbox", value: "remember-me"}
+              Remember me
+        %button.btn.btn-lg.btn-primary.btn-block{type: "submit"}
+          Sign in
+    #signup.tab-pane
+      %form.form-signin{method: "POST", action: "#{url_for(login)}"}
+        %h2.form-signin-heading
+          Please sign up
+        %label.sr-only{for:"name"}
+          Name
+        %input#name.form-control{name: "name", type:"text", placeholder: "Name"}
+        %label.sr-only{for:"email"}
+          Email address
+        %input#email.form-control{name: "email", type:"email", placeholder: "Email address", required: "true", autofocus: "true"}
+        %label.sr-only{for:"password"}
+          Password
+        %input#password.form-control{name: "password", type:"password", placeholder:"Password", required: "true"}
+        %input#confirm_password.form-control{name: "confirm_password", type:"password", placeholder:"Confirm Password", required: "true"}
+        %button.btn.btn-lg.btn-primary.btn-block{type: "submit"}
+          Sign Up

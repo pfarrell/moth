@@ -15,7 +15,15 @@ class Moth < Sinatra::Application
   end
 
   get "/application/:id/login" do
-    haml :login, locals: {application: application_from_params}
+    haml :login, locals: {application: application_from_params, current_user: current_user}
+  end
+
+  post "/application/:app_id/user/:user_id" do
+    user = User[params[:user_id].to_i]
+    application = Application[params[:app_id].to_i]
+    user.add_application application
+    user.save
+    redirect application.redirect
   end
 
   post "/application/:id/login" do
