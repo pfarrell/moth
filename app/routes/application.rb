@@ -11,6 +11,7 @@ class Moth < Sinatra::Application
   end
 
   get "/application/:id" do
+    protected
     haml :entity, locals: { entity: application_from_params }
   end
 
@@ -34,11 +35,13 @@ class Moth < Sinatra::Application
       respond_to do |wants|
         wants.json { token.to_json }
         wants.html {
-          response.set_cookie(:auth, value: token.token, path: "/", expires: token.expires)
+          cookie = Cookie.new(token, profile_url: url_for("/user/#{user.id}"), logout_url: url_for("/user/#{user.id}/logout"))
+          response.set_cookie(:auth, value: Base64.encode64(cookie.to_json), path: "/", expires: token.expires)
           redirect application_from_params.redirect
         }
       end
     else
+      status 401
       respond_to do |wants|
         wants.html { haml :login, locals: { application: application_from_params, error_message: "Login or password incorrect"}}
         wants.json { halt 401, "Login failure" }
@@ -57,6 +60,14 @@ class Moth < Sinatra::Application
     application.add_user current_user
     application.save
     redirect url_for("/application/#{application.id}")
+  end
+
+  post "/application/:id" do
+    protected
+    application = application_from_params
+    application.merge_form_data(params)
+    application.save
+    haml :application, locals: { application: application }
   end
 
   post "/application/:id/users" do

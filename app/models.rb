@@ -3,6 +3,8 @@ require 'pg'
 require 'logger'
 require 'bcrypt'
 require 'securerandom'
+require 'json'
+require 'base64'
 
 $console = ENV['RACK_ENV'] == 'development' ? Logger.new(STDOUT) : nil
 DB = Sequel.connect(
@@ -24,5 +26,6 @@ Sequel::Model.plugin :json_serializer
 require 'models/user'
 require 'models/log'
 require 'models/token'
+require 'models/cookie'
 require 'models/application'
 require 'models/helpers/model_helpers'

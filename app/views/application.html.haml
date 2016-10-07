@@ -1,3 +1,4 @@
+-app? = locals.keys.include(:application)
 %h2
   Register an Application
 %form{method: "POST"}
@@ -11,5 +12,5 @@
     Homepage
   %input#homepage.form-control.sp-bottom-sm{name: "homepage", type:"text", placeholder: "Homepage"}
   %button.btn.btn-lg.btn-primary.btn-block{type: "submit"}
-    Sign in
+    =app? ? "Save Application" : "Create Application"
 

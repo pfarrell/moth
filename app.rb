@@ -18,12 +18,19 @@ class Moth < Sinatra::Application
 
   helpers do
     def current_user
-      token = request.env["HTTP_AUTH_TOKEN"] || request.cookies["auth"]
-      Token.find(token: token)&.user
+      require 'byebug'
+      #byebug
+      cookie_token = request.env["HTTP_AUTH_TOKEN"] || request.cookies["auth"]
+      Token.find(token: decode_token(cookie_token)[:token])&.user
     end
 
     def protected
       redirect(url_for("/?return=#{request.path}")) unless current_user
+    end
+
+    def decode_token(token)
+      return {} if nil
+      JSON.parse(Base64.decode64(token), symbolize_names: true)
     end
   end
 
