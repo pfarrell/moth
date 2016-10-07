@@ -12,7 +12,7 @@ class Moth < Sinatra::Application
 
   get "/application/:id" do
     protected
-    haml :entity, locals: { entity: application_from_params }
+    haml :application, locals: { application: application_from_params }
   end
 
   get "/application/:id/login" do
@@ -65,7 +65,9 @@ class Moth < Sinatra::Application
   post "/application/:id" do
     protected
     application = application_from_params
-    application.merge_form_data(params)
+    application.name = params[:name]
+    application.redirect = params[:redirect]
+    application.homepage = params[:homepage]
     application.save
     haml :application, locals: { application: application }
   end

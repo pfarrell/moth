@@ -1,16 +1,16 @@
--app? = locals.keys.include(:application)
+-app = locals.keys.include?(:application)
 %h2
-  Register an Application
+  =app ? application.name : "Register an Application"
 %form{method: "POST"}
-  %label.sr-only{for:"name"}
+  %label{for:"name"}
     Name
-  %input#name.form-control{name: "name", type:"text", placeholder: "Name"}
-  %label.sr-only{for:"redirect"}
+  %input#name.form-control{name: "name", type:"text", placeholder: "Name", value: "#{application&.name}"}
+  %label{for:"redirect"}
     Redirect
-  %input#redirect.form-control{name: "redirect", type:"text", placeholder: "Redirect"}
-  %label.sr-only{for:"homepage"}
+  %input#redirect.form-control{name: "redirect", type:"text", placeholder: "Redirect", value: "#{application&.redirect}"}
+  %label{for:"homepage"}
     Homepage
-  %input#homepage.form-control.sp-bottom-sm{name: "homepage", type:"text", placeholder: "Homepage"}
+  %input#homepage.form-control.sp-bottom-sm{name: "homepage", type:"text", placeholder: "Homepage", value: "#{application&.homepage}"}
   %button.btn.btn-lg.btn-primary.btn-block{type: "submit"}
-    =app? ? "Save Application" : "Create Application"
+    =app ? "Save Application" : "Create Application"
 
