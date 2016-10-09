@@ -18,8 +18,6 @@ class Moth < Sinatra::Application
 
   helpers do
     def current_user
-      require 'byebug'
-      #byebug
       cookie_token = request.env["HTTP_AUTH_TOKEN"] || request.cookies["auth"]
       Token.find(token: decode_token(cookie_token)[:token])&.user
     end
@@ -29,7 +27,7 @@ class Moth < Sinatra::Application
     end
 
     def decode_token(token)
-      return {} if nil
+      return {} if token.nil?
       JSON.parse(Base64.decode64(token), symbolize_names: true)
     end
   end
