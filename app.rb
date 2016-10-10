@@ -30,6 +30,10 @@ class Moth < Sinatra::Application
       return {} if token.nil?
       JSON.parse(Base64.decode64(token), symbolize_names: true)
     end
+
+    def full_path(url)
+      "#{request.scheme}://#{request.host_with_port}#{url}"
+    end
   end
 
   before do

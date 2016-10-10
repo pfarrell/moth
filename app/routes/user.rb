@@ -20,7 +20,7 @@ class Moth < Sinatra::Application
   get "/user/:id/logout" do
     protected
     auth_token = cookies.delete("auth")
-    Token.find(token: auth_token).expire
+    Token.find(token: auth_token)&.expire if auth_token
     redirect url_for('/')
   end
 end

@@ -22,8 +22,10 @@ class Moth < Sinatra::Application
   post "/application/:app_id/user/:user_id" do
     user = User[params[:user_id].to_i]
     application = Application[params[:app_id].to_i]
-    user.add_application application
-    user.save
+    unless user.applications.include? application
+      user.add_application application
+      user.save
+    end
     redirect application.redirect
   end
 
@@ -35,7 +37,7 @@ class Moth < Sinatra::Application
       respond_to do |wants|
         wants.json { token.to_json }
         wants.html {
-          cookie = Cookie.new(token, profile_url: url_for("/user/#{user.id}"), logout_url: url_for("/user/#{user.id}/logout"))
+          cookie = Cookie.new(token, name: user.name, profile_url: full_path(url_for("/user/#{user.id}")), logout_url: full_path(url_for("/user/#{user.id}/logout")))
           response.set_cookie(:auth, value: Base64.encode64(cookie.to_json), path: "/", expires: token.expires)
           redirect application_from_params.redirect
         }
