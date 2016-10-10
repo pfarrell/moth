@@ -13,3 +13,4 @@ public/media
 coverage/**/*
 !coverage/coverage-badge.png
 log/*
+.ruby-version
