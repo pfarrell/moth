@@ -19,6 +19,13 @@ class Moth < Sinatra::Application
     haml :login, locals: {application: application_from_params, current_user: current_user}
   end
 
+  get '/application/:id/logout' do
+    protected
+    auth_token = cookies.delete("auth")
+    Token.find(token: auth_token)&.expire if auth_token
+    redirect application_from_params.homepage
+  end
+
   post "/application/:app_id/user/:user_id" do
     user = User[params[:user_id].to_i]
     application = Application[params[:app_id].to_i]
@@ -37,7 +44,7 @@ class Moth < Sinatra::Application
       respond_to do |wants|
         wants.json { token.to_json }
         wants.html {
-          cookie = Cookie.new(token, name: user.name, profile_url: full_path(url_for("/user/#{user.id}")), logout_url: full_path(url_for("/user/#{user.id}/logout")))
+          cookie = Cookie.new(token, name: user.name, profile_url: full_path(url_for("/user/#{user.id}")), logout_url: full_path(url_for("/application/#{application_from_params.id}/logout")))
           response.set_cookie(:auth, value: Base64.encode64(cookie.to_json), path: "/", expires: token.expires)
           redirect application_from_params.redirect
         }
