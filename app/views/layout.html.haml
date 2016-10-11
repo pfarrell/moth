@@ -2,7 +2,7 @@
 %html
   %head
     %title#title
-      Moth
+      = application_title
     %meta{:charset => "utf-8"}
     %meta{:name => "viewport", :content=>"width=device-width, initial-scale=1, maximum-scale=1"}
     %meta{:name=>"apple-mobile-web-app-capable", :content=>"yes"}
@@ -20,7 +20,7 @@
           %span.icon-bar
           %span.icon-bar
         %a.navbar-brand{href:"#{url_for("/")}"}
-          Moth
+          = application_title
       .collapse.navbar-collapse#navbar-collapse
         = haml :'partials/nav'
         = haml :'partials/profile', locals: { current_user: current_user } if current_user

@@ -34,6 +34,10 @@ class Moth < Sinatra::Application
     def full_path(url)
       "#{request.scheme}://#{request.host_with_port}#{url}"
     end
+
+    def application_title
+      application_from_params&.name || "Moth"
+    end
   end
 
   before do
