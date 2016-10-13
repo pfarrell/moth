@@ -11,7 +11,6 @@ end
 
 class MockConnection
   def deliver(&block)
-    $stderr.puts "mock gmail acted like it sent an email"
     if block_given?
       mail = Mail.new(&block)
     end
