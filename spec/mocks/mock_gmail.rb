@@ -17,6 +17,6 @@ class MockConnection
     end
     true
   end
-
-
 end
+
+class Mail ; end

@@ -1,6 +1,9 @@
+$: << File.expand_path('../spec', __FILE__)
+
 require 'simplecov'
 require 'test/unit'
 require 'rack/test'
+
 
 SimpleCov.start do
   require 'simplecov-badge'
@@ -56,4 +59,5 @@ RSpec.configure do |config|
   config.include RSpecMixin
 end
 
+require './spec/mocks/mock_gmail'
 require './app'
