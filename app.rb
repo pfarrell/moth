@@ -16,6 +16,16 @@ class Moth < Sinatra::Application
   set :session_secret, ENV["APP_SESSION_SECRET"] || "youshouldreallychangethis"
   set :views, Proc.new { File.join(root, "app/views") }
 
+  require 'models'
+  require 'routes'
+  require 'services'
+
+  configure do
+    email = development? || test? ? MockGmail : ::Gmail
+    set :email, Messaging.new(email)
+  end
+
+
   helpers do
     def current_user
       cookie_token = request.env["HTTP_AUTH_TOKEN"] || request.cookies["auth"]
@@ -38,6 +48,10 @@ class Moth < Sinatra::Application
     def application_title
       application_from_params&.name || "Moth"
     end
+
+    def gravatar_hash(email)
+       Digest::MD5.hexdigest email.downcase.strip
+    end
   end
 
   before do
@@ -45,5 +59,3 @@ class Moth < Sinatra::Application
   end
 end
 
-require 'models'
-require 'routes'

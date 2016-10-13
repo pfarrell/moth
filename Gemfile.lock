@@ -26,15 +26,26 @@ GEM
     docile (1.1.5)
     emk-sinatra-url-for (0.2.1)
       sinatra (>= 0.9.1.1)
+    gmail (0.6.0)
+      gmail_xoauth (>= 0.3.0)
+      mail (>= 2.2.1)
+    gmail_xoauth (0.4.2)
+      oauth (>= 0.3.6)
     haml (4.0.7)
       tilt
     i18n (0.7.0)
     json (2.0.2)
+    mail (2.6.4)
+      mime-types (>= 1.16, < 4)
     method_source (0.8.2)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
     multi_json (1.12.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
+    oauth (0.5.1)
     pg (0.19.0)
     power_assert (0.3.1)
     pry (0.10.4)
@@ -99,6 +110,7 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-rvm
   emk-sinatra-url-for
+  gmail
   haml
   pg
   pry

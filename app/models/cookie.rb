@@ -9,6 +9,7 @@ class Cookie
   end
 
   def to_json(opts={})
+#    byebug
     {
       token: @token,
       profile_url: @profile_url,

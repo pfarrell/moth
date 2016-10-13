@@ -14,6 +14,8 @@ gem 'haml'
 
 gem 'bcrypt'
 
+gem 'gmail'
+
 gem 'capistrano'
 gem 'capistrano-bundler'
 gem 'capistrano-bower'

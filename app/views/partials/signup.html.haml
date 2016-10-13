@@ -13,6 +13,7 @@
   .tab-content
     #login.tab-pane.active
       %form.form-signin{method: "POST", action: "#{url_for(signup)}"}
+        %input{type:"HIDDEN", name:"return_to", value:"#{return_to}"}
         %h2.form-signin-heading
           Please login
         %label.sr-only{for:"email"}
@@ -29,6 +30,7 @@
           Sign in
     #signup.tab-pane
       %form.form-signin{method: "POST", action: "#{url_for(login)}"}
+        %input{type:"HIDDEN", name:"return_to", value:"#{return_to}"}
         %h2.form-signin-heading
           Please sign up
         %label.sr-only{for:"name"}

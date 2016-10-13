@@ -16,13 +16,13 @@ class Moth < Sinatra::Application
   end
 
   get "/application/:id/login" do
-    haml :login, locals: {application: application_from_params, current_user: current_user}
+    haml :login, locals: {application: application_from_params, current_user: current_user, return_to: params[:return_to]}
   end
 
   get '/application/:id/logout' do
     protected
     auth_token = cookies.delete("auth")
-    Token.find(token: auth_token)&.expire if auth_token
+    Token.find(token: auth_token, type: "auth")&.expire if auth_token
     redirect application_from_params.homepage
   end
 
@@ -39,28 +39,23 @@ class Moth < Sinatra::Application
   post "/application/:id/login" do
     user = User.find(email: params[:email])
     if user && User.login(params[:email], params[:password])
-      token = Token.where(user: user).all.select{|x| x.expires > Time.now.utc}.first
-      token = Token.find_or_create(user: user) unless token
+      token = Token.where(user: user, type: "auth").all.select{|x| x.expires > Time.now.utc}.first
+      token = Token.find_or_create(user: user, type: "auth") unless token
       respond_to do |wants|
         wants.json { token.to_json }
         wants.html {
           cookie = Cookie.new(token, name: user.name, profile_url: full_path(url_for("/user/#{user.id}")), logout_url: full_path(url_for("/application/#{application_from_params.id}/logout")))
-          response.set_cookie(:auth, value: Base64.encode64(cookie.to_json), path: "/", expires: token.expires)
-          redirect application_from_params.redirect
+          response.set_cookie(:auth, value: Base64.strict_encode64(cookie.to_json), path: "/", expires: token.expires)
+          redirect (params[:return_to] || application_from_params.redirect)
         }
       end
     else
       status 401
       respond_to do |wants|
-        wants.html { haml :login, locals: { application: application_from_params, error_message: "Login or password incorrect"}}
+        wants.html { haml :login, locals: { application: application_from_params, error_message: "Login or password incorrect", return_to: nil}}
         wants.json { halt 401, "Login failure" }
       end
     end
-  end
-
-  get "/application" do
-    protected
-    haml :application
   end
 
   post "/application" do

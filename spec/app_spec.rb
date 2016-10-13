@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'byebug'
 
 describe 'Moth' do
 
@@ -12,7 +13,23 @@ describe 'Moth' do
       user.save
       user
     }
-    let(:token) { Token.new(user: user).save }
+
+    let(:token) {
+      t=Token.new(
+        user: user,
+        type: "auth"
+      ).save
+      t
+    }
+
+    let(:cookie) {
+      Cookie.new(
+        token,
+        profile_url: "test",
+        logout_url: "test",
+      )
+    }
+
     let(:application) {
       app = Application.find_or_create(name: app_name, redirect: 'http://example.com', homepage: 'http://example.net')
       app.add_user user
@@ -20,7 +37,7 @@ describe 'Moth' do
     }
 
   def authenticate
-    set_cookie "auth=#{token.token}"
+    set_cookie "auth=#{Base64.strict_encode64(cookie.to_json())}"
   end
 
   context "get url paths" do
@@ -30,7 +47,7 @@ describe 'Moth' do
       application
     end
 
-    ["/", "/users", "/application", "/applications"].each do |path|
+    ["/", "/users", "/applications", "/applications"].each do |path|
       it "should allow access to the #{path} page" do
         authenticate
         get "#{path}"
@@ -94,7 +111,7 @@ describe 'Moth' do
 
     it "should allow applications to be created" do
       authenticate
-      post "/application", { name: name }, {'HTTP_AUTH_TOKEN' => token.token}
+      post "/application", { name: name }
       expect(last_response).to be_redirect
     end
 
@@ -112,7 +129,7 @@ describe 'Moth' do
 
   context "/user" do
     it "creates users" do
-      authenticate
+      #authenticate
       post "/user", {email: "#{email}new", password: password, name: name}
       expect(last_response).to be_ok
       expect(User.find(email: "#{email}new", name: name)).to_not be_nil

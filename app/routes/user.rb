@@ -23,4 +23,19 @@ class Moth < Sinatra::Application
     Token.find(token: auth_token)&.expire if auth_token
     redirect url_for('/')
   end
+
+  get "/user/password_reset" do
+    haml :password_reset
+  end
+
+  post "/user/password_reset" do
+    user = User.find(email: params[:email])
+    if user
+      token = Token.new(user: user, type: "pwreset")
+      send_reset_email(user)
+    else
+      sleep(rand)
+    end
+    haml :password_reset, flash: "If this email was registered, a reset token has been sent to the registered email"
+  end
 end
