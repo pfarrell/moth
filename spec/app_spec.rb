@@ -47,7 +47,7 @@ describe 'Moth' do
       application
     end
 
-    ["/", "/users", "/applications", "/applications"].each do |path|
+    %w(/ /users /user/password_reset /applications /applications).each do |path|
       it "should allow access to the #{path} page" do
         authenticate
         get "#{path}"
@@ -162,6 +162,17 @@ describe 'Moth' do
       authenticate
       post "/application/#{application.id}", {homepage: "new homepage"}
       expect(Application[application.id].homepage).to eq("new homepage")
+    end
+
+    it "resets passwords" do
+      authenticate
+      post "/application/#{application.id}/password_reset", {email: user.email}
+      expect(last_response).to be_ok
+    end
+
+    it "resets passwords" do
+      post "/application/#{application.id}/password_reset", {email: "#{user.email}new"}
+      expect(last_response).to be_ok
     end
   end
 

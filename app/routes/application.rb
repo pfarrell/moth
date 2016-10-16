@@ -86,4 +86,16 @@ class Moth < Sinatra::Application
       wants.json { ret.to_json }
     end
   end
+
+  post "/application/:id/password_reset" do
+    user = User.find(email: params[:email])
+    if user
+      token = Token.new(user: user, type: "pwreset")
+      settings.email.send_password_reset(application_from_params, current_user.email, token)
+    else
+      sleep(rand)
+    end
+    haml :password_reset, flash: "If this email was registered, a reset token has been sent to the registered email"
+  end
+
 end

@@ -8,7 +8,7 @@ class Messaging
   def send_password_reset(application, email, token_link)
     require 'byebug'
     connect do |gmail|
-      byebug
+#      byebug
       gmail.deliver do
         to = email
         subject "#{application.name}:: Reset Your Password"

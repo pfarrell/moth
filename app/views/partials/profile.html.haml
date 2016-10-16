@@ -1,7 +1,7 @@
 %ul.nav.navbar-nav.pull-right
   %li.dropdown
     %a.dropdown-toggle{href: "#", role: "button", aria: { haspopup: "true", expanded: "false"}, data: { toggle: "dropdown"}}
-      =current_user.name
+      %img{src: "//www.gravatar.com/avatar/#{gravatar_hash(current_user.email)}"}
       %span.caret
     %ul.dropdown-menu
       %li
