@@ -125,6 +125,44 @@ describe 'Moth' do
       post "/application/#{application.id}/users"
       expect(last_response).to be_ok
     end
+
+    it "logs out users" do
+      authenticate
+      get "/application/#{application.id}/logout"
+      expect(rack_mock_session.cookie_jar["auth"]).to be_empty
+      expect(last_response).to be_redirect
+    end
+
+    it "adds users to applications" do
+      app2 = Application.find_or_create(name: "new app", redirect: 'http://example.com', homepage: 'http://example.net')
+      authenticate
+      post "/application/#{app2.id}/user/#{user.id}"
+      expect(last_response).to be_redirect
+    end
+
+    it "allows calls to add users to applications they already belong to" do
+      authenticate
+      post "/application/#{application.id}/user/#{user.id}"
+      expect(last_response).to be_redirect
+    end
+
+    it "updates application names" do
+      authenticate
+      post "/application/#{application.id}", {name: "new name"}
+      expect(Application[application.id].name).to eq("new name")
+    end
+
+    it "updates application redirects" do
+      authenticate
+      post "/application/#{application.id}", {redirect: "new redirect"}
+      expect(Application[application.id].redirect).to eq("new redirect")
+    end
+
+    it "updates application homepages" do
+      authenticate
+      post "/application/#{application.id}", {homepage: "new homepage"}
+      expect(Application[application.id].homepage).to eq("new homepage")
+    end
   end
 
   context "/user" do

@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe 'Messaging' do
+  let(:app_name) { "dragons" }
+  let(:application) { Application.find_or_create(name: app_name) }
   let(:subject) { Messaging.new(MockGmail) }
 
-  context 'send_login' do
-    it 'sends login tokens' do
-      subject.send_login('test@example.com', '12345')
+  context '.send_password_reset' do
+    it 'sends password reset' do
+      subject.send_password_reset(application, 'test@example.com', '12345')
     end
   end
 

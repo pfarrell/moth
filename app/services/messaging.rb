@@ -5,17 +5,19 @@ class Messaging
     @klass = klass
   end
 
-  def send_login(email, token_link)
+  def send_password_reset(application, email, token_link)
+    require 'byebug'
     connect do |gmail|
+      byebug
       gmail.deliver do
-        to email
-        subject "Bemused:: Login Granted"
+        to = email
+        subject "#{application.name}:: Reset Your Password"
         text_part do
           body = "#{token_link}"
         end
         html_part do
           content_type 'text/html; charset=UTF-8'
-          body %Q[<a href="#{token_link}">Want to get some great music?</a>?]
+          body %Q[<a href="#{token_link}">Reset your password?</a>?]
         end
       end
     end
