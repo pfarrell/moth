@@ -5,6 +5,7 @@ require 'bcrypt'
 require 'securerandom'
 require 'json'
 require 'base64'
+require 'gmail'
 
 $console = ENV['RACK_ENV'] == 'development' ? Logger.new(STDOUT) : nil
 DB = Sequel.connect(
