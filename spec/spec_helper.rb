@@ -59,5 +59,6 @@ RSpec.configure do |config|
   config.include RSpecMixin
 end
 
+require 'gmail'
 require './spec/mocks/mock_gmail'
 require './app'

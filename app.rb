@@ -21,7 +21,7 @@ class Moth < Sinatra::Application
   require 'services'
 
   configure do
-    email = development? || test? ? Object.const_get("MockGmail") : ::Gmail
+    email = test? ? Class.const_get("MockGmail") : ::Gmail
     set :email, Messaging.new(email)
   end
 

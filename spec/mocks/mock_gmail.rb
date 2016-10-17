@@ -12,10 +12,9 @@ end
 class MockConnection
   def deliver(&block)
     if block_given?
-      mail = Mail.new(&block)
+      Mail.new(&block)
     end
     true
   end
 end
 
-class Mail ; end
