@@ -13,7 +13,7 @@ class Token < Sequel::Model
   end
 
   def expire
-    self.expired_at = Time.now.utc
+    self.deleted_at = Time.now.utc
     self.save
   end
 

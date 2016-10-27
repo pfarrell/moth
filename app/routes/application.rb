@@ -20,13 +20,10 @@ class Moth < Sinatra::Application
   end
 
   get '/application/:id/logout' do
+    require 'byebug'
     protected
-    puts "cookies: #{cookies.keys}"
-    auth_token = cookies.delete("auth")
-    puts "del cks: #{cookies.keys}"
-    Token.find(token: auth_token, type: "auth")&.expire if auth_token
-    puts "application.homepage: #{application_from_params.homepage}"
-    puts "cookies: #{cookies.keys}"
+    auth_token = decode_token(cookies.delete("auth"))
+    Token.find(token: auth_token[:token], type: "auth")&.expire if auth_token
     redirect application_from_params.homepage
   end
 
@@ -43,7 +40,7 @@ class Moth < Sinatra::Application
   post "/application/:id/login" do
     user = User.find(email: params[:email])
     if user && User.login(params[:email], params[:password])
-      token = Token.where(user: user, type: "auth").all.select{|x| x.expires > Time.now.utc}.first
+      token = Token.where(user: user, type: "auth", deleted_at: nil).all.select{|x| x.expires > Time.now.utc}.first
       token = Token.new(user: user, type: "auth").save unless token
       respond_to do |wants|
         wants.json { token.to_json }
