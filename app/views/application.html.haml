@@ -1,6 +1,6 @@
 -app = locals.keys.include?(:application)
 %h2
-  =app ? application.name : "Register an Application"
+  =app ? application&.name : "Register an Application"
 %form{method: "POST"}
   %label{for:"name"}
     Name

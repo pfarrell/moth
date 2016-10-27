@@ -5,4 +5,6 @@
 .row
   .col-sm-6
     =haml :'partials/signup', locals: { application: application, user: current_user, signup: "/application/#{application.id}/login", login:  "/application/#{application.id}/users" , return_to: return_to}
+    %a{href: "#{url_for('/user/password_reset')}"}
+      reset password
 :javascript

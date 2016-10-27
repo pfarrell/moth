@@ -52,10 +52,14 @@ class Moth < Sinatra::Application
     else
       status 401
       respond_to do |wants|
-        wants.html { haml :login, locals: { application: application_from_params, error_message: "Login or password incorrect", return_to: nil}}
+        wants.html { haml :login, locals: { application: application_from_params, error_message: "Login or password incorrect", return_to: params[:return_to]}}
         wants.json { halt 401, "Login failure" }
       end
     end
+  end
+
+  get "/application" do
+    haml :application, locals: { application: nil }
   end
 
   post "/application" do
