@@ -20,7 +20,6 @@ class Moth < Sinatra::Application
   end
 
   get '/application/:id/logout' do
-    require 'byebug'
     protected
     auth_token = decode_token(cookies.delete("auth"))
     Token.find(token: auth_token[:token], type: "auth")&.expire if auth_token
