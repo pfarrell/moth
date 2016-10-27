@@ -21,8 +21,12 @@ class Moth < Sinatra::Application
 
   get '/application/:id/logout' do
     protected
+    puts "cookies: #{cookies.keys}"
     auth_token = cookies.delete("auth")
+    puts "del cks: #{cookies.keys}"
     Token.find(token: auth_token, type: "auth")&.expire if auth_token
+    puts "application.homepage: #{application_from_params.homepage}"
+    puts "cookies: #{cookies.keys}"
     redirect application_from_params.homepage
   end
 
