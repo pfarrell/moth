@@ -39,8 +39,7 @@ class Moth < Sinatra::Application
   post "/application/:id/login" do
     user = User.find(email: params[:email])
     if user && User.login(params[:email], params[:password])
-      token = Token.where(user: user, type: "auth", deleted_at: nil).all.select{|x| x.expires > Time.now.utc}.first
-      token = Token.new(user: user, type: "auth").save unless token
+      token = Token.new(user: user, type: "auth").save
       respond_to do |wants|
         wants.json { token.to_json }
         wants.html {
