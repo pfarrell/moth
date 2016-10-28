@@ -46,7 +46,7 @@ describe 'Moth' do
       application
     end
 
-    %w(/ /users /user/password_reset /applications /applications).each do |path|
+    %w(/ /users /user/password_reset /application /applications).each do |path|
       it "should allow access to the #{path} page" do
         authenticate
         get "#{path}"
@@ -54,7 +54,7 @@ describe 'Moth' do
       end
     end
 
-    ["/users", "/application", "/applications"].each do |path|
+    %w(/users /application /applications).each do |path|
       it "should deny unauthenticated access to the #{path} page" do
         get "#{path}"
         expect(last_response).to_not be_ok

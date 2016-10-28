@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Cookie do
-  let(:token) { Token.new }
+  let(:token) { Token.new(user: user) }
+  let(:user) { User.new.save }
 
   context ("#intialize") do
     it "must be intialized with a Token" do

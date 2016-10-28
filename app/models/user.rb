@@ -4,6 +4,11 @@ class User < Sequel::Model
   one_to_many  :tokens
   many_to_many :applications
 
+  def initialize(opts={})
+    super(opts)
+    self.userid = SecureRandom.hex(6)
+  end
+
   def set_password(str)
     password = Password.create(str)
     self.password = password.to_s

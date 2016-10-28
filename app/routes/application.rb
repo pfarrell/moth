@@ -60,6 +60,7 @@ class Moth < Sinatra::Application
   end
 
   get "/application" do
+    protected
     haml :application, locals: { application: nil }
   end
 

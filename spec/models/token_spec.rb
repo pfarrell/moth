@@ -21,7 +21,7 @@ describe Token do
 
   context '.expire' do
     it "expires tokens" do
-      expect(token.expire.expired_at).to_not be_nil
+      expect(token.expire.deleted_at).to_not be_nil
     end
   end
 end
