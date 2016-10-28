@@ -12,7 +12,7 @@ class Moth < Sinatra::Application
   helpers Sinatra::Cookies
   register Sinatra::RespondTo
 
-  enable :sessions
+#  enable :sessions
   set :session_secret, ENV["APP_SESSION_SECRET"] || "youshouldreallychangethis"
   set :views, Proc.new { File.join(root, "app/views") }
 

@@ -22,13 +22,14 @@ class Moth < Sinatra::Application
   get '/application/:id/logout' do
     protected
     auth_token = decode_token(cookies.delete("auth"))
+    session.clear
     Token.find(token: auth_token[:token], type: "auth")&.expire if auth_token
     redirect application_from_params.homepage
   end
 
-  post "/application/:app_id/user/:user_id" do
+  post "/application/:id/user/:user_id" do
     user = User[params[:user_id].to_i]
-    application = Application[params[:app_id].to_i]
+    application = application_from_params
     unless user.applications.include? application
       user.add_application application
       user.save
@@ -45,7 +46,8 @@ class Moth < Sinatra::Application
         wants.html {
           cookie = Cookie.new(token, name: user.name, profile_url: full_path(url_for("/user/#{user.id}")), logout_url: full_path(url_for("/application/#{application_from_params.id}/logout")))
           response.set_cookie(:auth, value: Base64.strict_encode64(cookie.to_json), path: "/", expires: token.expires)
-          redirect (params[:return_to] || application_from_params.redirect)
+          redirect_path = params[:return_to] == "" ? nil : params[:redirect_to]
+          redirect (redirect_path || application_from_params.redirect)
         }
       end
     else
