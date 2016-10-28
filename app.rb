@@ -13,7 +13,7 @@ class Moth < Sinatra::Application
   register Sinatra::RespondTo
 
 #  enable :sessions
-  set :session_secret, ENV["APP_SESSION_SECRET"] || "youshouldreallychangethis"
+#  set :session_secret, ENV["APP_SESSION_SECRET"] || "youshouldreallychangethis"
   set :views, Proc.new { File.join(root, "app/views") }
 
   require 'models'
