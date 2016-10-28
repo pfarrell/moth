@@ -20,7 +20,9 @@ class Moth < Sinatra::Application
   end
 
   get '/application/:id/logout' do
+    protected
     auth_token = decode_token(cookies.delete("auth"))
+    session.clear
     Token.find(token: auth_token[:token], type: "auth")&.expire if auth_token
     redirect application_from_params.homepage
   end
@@ -32,7 +34,7 @@ class Moth < Sinatra::Application
       user.add_application application
       user.save
     end
-    haml locals: {redirect: application.redirect}, layout: false
+    redirect application.redirect
   end
 
   post "/application/:id/login" do
