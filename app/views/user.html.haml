@@ -1,0 +1,17 @@
+%h2
+  ="#{user.class}(##{user.id})"
+%table.table.table-condensed
+  -user.columns.each do |col|
+    %tr
+      %th
+        =col
+      %td
+        =user[col]
+
+%h3
+  Applications
+-user.applications.each do |app|
+  %a{href: "#{url_for("/application/#{app.id}")}"}
+    =app.name
+
+

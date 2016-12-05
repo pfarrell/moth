@@ -19,6 +19,6 @@ class Moth < Sinatra::Application
   get "/user/:id" do
     protected
     user = User[params[:id].to_i]
-    haml :entity, locals: { entity: user }
+    haml :user, locals: { user: user }
   end
 end
